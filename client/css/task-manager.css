@@ -1,0 +1,933 @@
+/* ========== RESET & GLOBAL STYLES ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Add this to your task-manager.css */
+
+/* ========== CUSTOM SCROLLBARS ========== */
+/* Main scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #1a1a1a;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #2d2d2d;
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Thumb */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #ff8c00, #ff6b6b);
+  border-radius: 10px;
+  border: 2px solid #2d2d2d;
+  transition: all 0.3s ease;
+}
+
+/* Thumb hover effect */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #ff6b6b, #ff8c00);
+  transform: scale(1.05);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ff8c00 #2d2d2d;
+}
+
+/* Sidebar specific scrollbar */
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #ff8c00;
+  border-radius: 4px;
+}
+
+/* Task list scrollbar */
+.tasks-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Animated scrollbar for modal content */
+.modal-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #ff8c00, #ffd700);
+  animation: scrollGlow 1.5s infinite alternate;
+}
+
+@keyframes scrollGlow {
+  from {
+    box-shadow: 0 0 5px rgba(255, 140, 0, 0.3);
+  }
+  to {
+    box-shadow: 0 0 15px rgba(255, 140, 0, 0.6);
+  }
+}
+
+/* Modern minimal scrollbar for dropdowns */
+.dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background: rgba(255, 140, 0, 0.5);
+  border-radius: 3px;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #ffffff;
+  color: #333;
+}
+ul {
+  list-style: none;
+}
+
+/* ========== TASK MANAGER CONTAINER ========== */
+.task-manager-container {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+  position: relative;
+}
+
+/* ========== SIDEBAR ========== */
+/* Sidebar Container: Ensure it is a flex column */
+/* Default sidebar */
+/* ========== SIDEBAR ========== */
+.sidebar {
+  width: 280px;
+  background-color: #1c1c1c;
+  color: #ffffff;
+  padding: 1rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh; 
+  transition: transform 0.3s ease;
+}
+
+/* Hide sidebar on small screens, animate slide-in */
+@media (max-width: 768px) {
+  .sidebar { 
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    transform: translateX(-100%);
+    width: 220px;
+    height: 100vh;
+    z-index: 2000;
+    background-color: #0e0b0b;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+  }
+  /* When .active is added, slide the sidebar into view */
+  .sidebar.active {
+    transform: translateX(0);
+  }
+}
+
+.sidebar-top {
+  padding: 0.5rem;
+  margin-top: 10px;
+}
+.brand {
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+.brand h2 {
+  font-size: 1.5rem;
+  color: #ff8c00; /* Example highlight color */
+}
+
+@media (max-width: 480px) {
+  .brand h2 {
+    font-size: 1.2rem;
+  }
+}
+
+
+
+/* Sidebar Sections */
+.sidebar-section + .sidebar-section {
+  margin-top: 2rem;
+}
+.section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+.section-list .list-item {
+  padding: 0.4rem 0;
+  cursor: pointer;
+  color: #b7b1b1;
+}
+.section-list .list-item.active,
+.section-list .list-item:hover {
+  color: #827e7e;
+  font-weight: 500;
+}
+
+.hidden-list-item {
+  display: none;
+}
+
+
+
+
+
+
+/* ========== BACK BUTTON SECTION ========== */
+.back-button-section {
+  margin-top: auto; /* Pushes this section to the bottom */
+  padding: 1rem;
+  text-align: center;
+  border-top: 1px solid #333; /* Optional visual separator */
+}
+.back-button {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 1rem;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.back-button:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Responsive Adjustments for Back Button */
+@media (max-width: 768px) {
+  .back-button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+  .back-button-section {
+    padding: 0.8rem;
+  }
+}
+@media (max-width: 480px) {
+  .back-button {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.7rem;
+  }
+  .back-button-section {
+    padding: 0.7rem;
+  }
+}
+
+/* ========== MAIN CONTENT ========== */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER / TOP BAR */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+.hamburger-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+@media (max-width: 768px) {
+  .hamburger-btn {
+    display: block;
+  }
+}
+.header-left h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.2rem;
+}
+.header-left p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .header-left h1 {
+    font-size: 0.5rem;
+  }
+}
+
+.header-right .date-dropdown {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.header-right .arrow-down {
+  margin-left: 0.5rem;
+}
+
+
+
+
+/* ========== DROPDOWN ========== */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  width: 150px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  z-index: 100;
+  margin-top: 0.5rem;
+}
+.hidden {
+  display: none;
+}
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  color: #333;
+}
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* ========== TASKS SECTION ========== */
+.tasks-section {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.task-item {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.task-left input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+.task-name.completed {
+  text-decoration: line-through;
+  color: #aaa;
+}
+.task-right {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.task-btn {
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.task-btn:hover {
+  color: #333;
+}
+
+/* ========== CREATE TASK BUTTON ========== */
+.create-task-btn {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.9rem 1.4rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+.create-task-btn:hover {
+  background-color: #0056b3;
+}
+
+/* ========== ADVANCED SCHEDULING BUTTON ========== */
+#advancedScheduleBtn {
+  position: fixed;
+  right: 1rem;
+  bottom: 6rem; /* Positioned above the Create Task button */
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1rem;
+  z-index: 1100;
+  transition: all 0.3s ease;
+}
+#advancedScheduleBtn:hover {
+  background-color: #218838;
+}
+@media (max-width: 768px) {
+  #advancedScheduleBtn.sidebar-open {
+    z-index: -1;
+  }
+}
+
+/* ========== MODAL (General) ========== */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  max-width: 500px;
+  padding: 2rem;
+  position: relative;
+  border-radius: 8px;
+}
+.close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  color: #999;
+  cursor: pointer;
+}
+.close-modal:hover {
+  color: #333;
+}
+.hidden {
+  display: none;
+}
+
+/* ========== TASK FORM ========== */
+#taskForm label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 500;
+  color: #555;
+}
+#taskForm input[type="text"],
+#taskForm input[type="date"],
+#taskForm input[type="time"],
+#taskForm select,
+#taskForm textarea {
+  width: 100%;
+  margin-top: 0.4rem;
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+}
+#taskForm textarea {
+  resize: vertical;
+  height: 60px;
+}
+.datetime-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+#saveTaskBtn {
+  margin-top: 1.5rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#saveTaskBtn:hover {
+  background-color: #0056b3;
+}
+
+/* ========== ADVANCED SCHEDULING MODAL ========== */
+#advancedSchedulingForm label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 500;
+  color: #555;
+}
+#advancedSchedulingForm select,
+#advancedSchedulingForm input[type="number"],
+#advancedSchedulingForm input[type="date"] {
+  width: 100%;
+  margin-top: 0.4rem;
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+}
+#saveAdvancedSchedule {
+  margin-top: 1.5rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#saveAdvancedSchedule:hover {
+  background-color: #0056b3;
+}
+
+.time-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.time-row div {
+  flex: 1;
+}
+
+/* ======================
+   CALENDAR MODAL STYLES
+   ====================== */
+/* Modal Overlay */
+.calendar-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Above everything else */
+}
+.calendar-modal.hidden {
+  display: none;
+}
+.calendar-modal-content {
+  background-color: #fff;
+  width: 320px;          /* Default width on larger screens */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+/* Header (Month-Year Title & Close Button) */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.calendar-header h2 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+.close-calendar {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #666;
+}
+/* Month Navigation (Prev / Next) */
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+.month-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 0 1rem;
+  color: #666;
+}
+.month-btn:hover {
+  color: #000;
+}
+#currentMonthLabel {
+  font-weight: 500;
+}
+/* Days of the Week Row */
+.calendar-days-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.3rem;
+}
+/* Date Grid */
+.dates-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.2rem;
+  margin-bottom: 1rem;
+}
+.date-cell {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+  margin: 0 auto;
+  color: #333;
+}
+.date-cell:hover {
+  background-color: #f0f0f0;
+}
+.date-cell.selected {
+  background-color: #007bff;
+  color: #fff;
+}
+.date-cell.disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+/* Time Picker Section */
+.time-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+.time-section input[type="time"] {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.3rem 0.5rem;
+  width: 90px;
+}
+/* Footer (Save / Cancel Buttons) */
+.calendar-footer {
+  display: flex;
+  justify-content: center;
+}
+.save-calendar-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.save-calendar-btn:hover {
+  background-color: #0056b3;
+}
+
+/* ============================
+   RESPONSIVE MEDIA QUERIES
+   ============================ */
+/* Tablets (max-width: 992px) */
+@media (max-width: 992px) {
+  .sidebar {
+    width: 220px;
+  }
+}
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+  .task-manager-container {
+    flex-direction: column;
+  }
+  .create-task-btn {
+    right: 1rem;
+    bottom: 1rem;
+  }
+  .calendar-modal-content {
+    width: 90%;  /* Make the modal take most of the screen width */
+    max-width: 400px;
+  }
+}
+/* Extra Small (max-width: 480px) */
+@media (max-width: 480px) {
+  .main-header h1 {
+    font-size: 1.2rem;
+  }
+  .main-header p {
+    font-size: 0.8rem;
+  }
+}
+/* Advanced Scheduling Modal Responsive */
+/* Tablets & Smaller Screens (max-width: 768px) */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 90%;
+    margin: 10% auto;
+    padding: 1.5rem;
+  }
+  .close-modal {
+    font-size: 1.3rem;
+  }
+}
+/* Extra Small Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .modal-content {
+    width: 95%;
+    margin: 12% auto;
+    padding: 1rem;
+  }
+  #advancedSchedulingForm label {
+    font-size: 0.9rem;
+  }
+  #saveAdvancedSchedule {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+  .calendar-modal-content {
+    width: 90%;
+    padding: 0.5rem;
+  }
+  .calendar-header h2 {
+    font-size: 1rem;
+  }
+  .close-calendar {
+    font-size: 1.2rem;
+  }
+  .month-btn {
+    font-size: 0.9rem;
+  }
+  .calendar-days-row {
+    font-size: 0.75rem;
+  }
+  .date-cell {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+  }
+  .time-section {
+    font-size: 0.8rem;
+  }
+  .save-calendar-btn {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* -----------------------------
+   New List Modal Styles
+------------------------------ */
+
+/* Modal overlay */
+.new-list-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000; /* Ensure it appears on top */
+}
+
+/* Hide modal by default */
+.new-list-modal.hidden {
+  display: none;
+}
+
+/* Modal content container */
+.new-list-modal-content {
+  background-color: #fff;
+  width: 400px;
+  max-width: 90%;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Close button in modal */
+.new-list-modal-content .close-modal {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.new-list-modal-content .close-modal:hover {
+  color: #333;
+}
+
+/* Form label and input styles */
+.new-list-modal-content form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+}
+.new-list-modal-content form input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+/* Form button styles */
+.new-list-modal-content form button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.new-list-modal-content form button:hover {
+  background-color: #0056b3;
+}
+
+/* =========================
+   Responsive Adjustments
+========================= */
+
+/* For tablets (max-width: 768px) */
+@media (max-width: 768px) {
+  .new-list-modal-content {
+    width: 90%;
+    max-width: 500px;
+    padding: 1.2rem;
+  }
+  .new-list-modal-content .close-modal {
+    font-size: 1.3rem;
+  }
+}
+
+/* For mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .new-list-modal-content {
+    width: 90%;
+    padding: 1rem;
+  }
+  .new-list-modal-content .close-modal {
+    font-size: 1.2rem;
+  }
+}
+
+/* Notification Popup */
+.html-notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  display: none;
+  max-width: 300px;
+  z-index: 2000;
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Notification Close Button */
+.notification-close {
+  float: right;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 1rem;
+}
+
+/* Slide in animation */
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* Responsive Styles */
+
+/* For tablets (max-width: 768px) */
+@media (max-width: 768px) {
+  .html-notification {
+    bottom: 15px;
+    right: 15px;
+    padding: 1rem;
+    max-width: 250px;
+  }
+}
+
+/* For mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .html-notification {
+    bottom: 10px;
+    right: 10px;
+    padding: 0.8rem;
+    max-width: 220px;
+    font-size: 0.9rem;
+  }
+  .notification-close {
+    font-size: 1rem;
+  }
+}
+
+/* list css */
+/* Ensure list items are flex containers */
+.section-list .list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;       /* Prevent container from expanding */
+  white-space: nowrap;    /* Keep on one line */
+  text-overflow: ellipsis;/* Truncate with ellipsis if too long */
+}
+
+/* Specifically style the list name span */
+.list-name {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+

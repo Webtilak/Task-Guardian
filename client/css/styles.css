@@ -1,0 +1,23 @@
+/* Default light mode styles */
+body {
+    background-color: #fff;
+    color: #333;
+  }
+  
+  /* Dark mode overrides */
+  body.dark-mode {
+    background-color: #222;
+    color: #ddd;
+  }
+  
+  /* Example for other elements */
+  .navbar, .sidebar, .settings-container {
+    transition: background-color 0.3s, color 0.3s;
+  }
+  body.dark-mode .navbar,
+  body.dark-mode .sidebar,
+  body.dark-mode .settings-container {
+    background-color: #333;
+    color: #ddd;
+  }
+  

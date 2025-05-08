@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Settings Page - Task Guardian</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/settings.css">
+</head>
+<body>
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <div class="brand sidebar-brand">
+        <h2>Task Guardian</h2>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="dashboard.html" >Overview</a></li>
+        <li><a href="calender.html">Calendar</a></li>
+        <li><a href="task-manager.html">Task Manager</a></li>
+        <li><a href="#" class="active">Settings</a></li>
+      </ul>
+    </nav>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+    <!-- HEADER -->
+    <header class="main-header">
+      <button id="hamburger-btn" class="hamburger-btn">&#9776;</button>
+      <div class="header-left">
+        <h1>Settings</h1>
+      </div>
+      <div class="header-right">
+        <!-- Additional header items -->
+      </div>
+    </header>
+
+    <!-- SETTINGS SECTION -->
+    <div class="settings-container">
+      <!-- Left sub-navigation -->
+      <nav class="settings-nav">
+        <ul>
+          <li class="settings-item active" data-target="profile">Profile</li>
+          <li class="settings-item" data-target="account">Account</li>
+          <!-- <li class="settings-item" data-target="appearance">Appearance</li>
+          <li class="settings-item" data-target="notifications">Notifications</li> -->
+        </ul>
+      </nav>
+
+      <!-- Right content area -->
+      <div class="settings-content">
+        <!-- PROFILE SECTION -->
+        <div class="settings-panel active-panel" id="profile">
+          <h2>Profile</h2>
+          <p>Update your personal information here.</p>
+          
+          <div class="profile-image">
+            <img id="profilePicture" src="" alt="Profile" />
+            <button class="upload-btn">Upload / Change</button>
+             <!-- Hidden file input for image upload -->
+             <input type="file" id="profilePictureInput" accept="image/*" style="display:none;">
+          </div>
+
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Your username" />
+          </div>
+
+          <div class="form-group">
+            <label for="emailProfile">Email</label>
+            <input type="email" id="emailProfile" placeholder="you@example.com" />
+          </div>
+
+          <!-- <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="tel" id="phoneNumber" placeholder="(123) 456-7890" />
+          </div> -->
+
+          <button class="save-btn">Save Profile</button>
+        </div>
+
+        <!-- ACCOUNT SECTION -->
+        <div class="settings-panel" id="account">
+          <h2>Account</h2>
+          <p>Manage your account security </p>
+
+          <div class="form-group">
+            <label for="currentPassword">Current Password</label>
+            <input type="password" id="currentPassword" placeholder="Enter current password" />
+          </div>
+          <div class="form-group">
+            <label for="newPassword">New Password</label>
+            <input type="password" id="newPassword" placeholder="Enter new password" />
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" placeholder="Re-enter new password" />
+          </div>
+          <button id="changePasswordBtn" class="change-btn">Change Password</button>
+
+
+          <!-- <hr style="margin: 1.5rem 0;" /> -->
+
+          <!-- <h3>External Accounts</h3>
+          <p>Connect or remove social accounts below (optional).</p>
+          <button class="save-btn" style="margin-top:0.5rem;">Connect Google</button>
+          <button class="save-btn" style="margin-top:0.5rem;">Connect GitHub</button> -->
+
+          <hr style="margin: 1.5rem 0;" />
+          <button class="logout-btn" id="settingsLogoutBtn">Log out</button>
+        </div>
+
+        <!-- APPEARANCE SECTION -->
+        <!-- <div class="settings-panel" id="appearance">
+          <h2>Appearance</h2>
+          <p>Customize the look and feel of your dashboard.</p>
+
+          <div class="toggle-group">
+            <label class="toggle-label">Dark Mode</label>
+            <label class="switch">
+              <input type="checkbox" id="darkModeToggle" />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label for="accentColor">Accent Color</label>
+            <input type="color" id="accentColor" value="#ff8c00" />
+          </div>
+
+          <button class="save-btn">Save Appearance</button>
+        </div> -->
+
+        <!-- NOTIFICATIONS SECTION -->
+        <!-- <div class="settings-panel" id="notifications">
+          <h2>Notifications</h2>
+          <p>Control how and when you receive notifications.</p>
+
+          <div class="toggle-group">
+            <label class="toggle-label">Email Notifications</label>
+            <label class="switch">
+              <input type="checkbox" id="emailNotifications" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="toggle-group">
+            <label class="toggle-label">SMS Notifications</label>
+            <label class="switch">
+              <input type="checkbox" id="smsNotifications" />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="toggle-group">
+            <label class="toggle-label">Push Notifications</label>
+            <label class="switch">
+              <input type="checkbox" id="pushNotifications" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <button class="save-btn">Save Notifications</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- POPUP MODAL -->
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <span id="popup-close" class="popup-close">&times;</span>
+      <p id="popup-message"></p>
+    </div>
+  </div>
+
+  <!-- JavaScript: Switch between sections, handle toggles, popup, etc. -->
+  <script src="js/settings.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TaskManager Calendar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <!-- FullCalendar CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/calendar.css" />
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <div class="brand">
+        <h2>Task Guardian</h2>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="dashboard.html" >Overview</a></li>
+        <li><a href="#" class="active">Calendar</a></li>
+        <li><a href="task-manager.html">Task Manager</a></li>
+        <li><a href="setting.html">Settings</a></li>
+      </ul>
+    </nav>
+
+    
+  </aside>
+  
+  <!-- SIDEBAR OVERLAY -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+    <header class="main-header">
+      <button id="hamburger-btn" class="hamburger-btn">&#9776;</button>
+      <div class="header-left">
+        <h1>Calendar</h1>
+      </div>
+      <div class="header-right">
+        <!-- Optional header elements -->
+      </div>
+    </header>
+
+    <section class="calendar-section">
+      <div id="calendar"></div>
+    </section>
+  </div>
+
+  <!-- NOTIFICATION POPUP -->
+<!-- MODAL POPUP -->
+  <div id="modalPopup" class="modal-popup hidden">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle"></h3>
+        <span id="closeModal" class="modal-close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <p id="modalMessage"></p>
+      </div>
+    </div>
+  </div>
+  <audio id="notifSound" src="assets/notification.mp3" preload="auto"></audio>
+
+  <!-- FullCalendar JS -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <!-- Custom JS -->
+  <script src="js/calendar.js"></script>
+</body>
+</html>

@@ -1,0 +1,752 @@
+ 
+/* ------------------------------
+     RESET & BASE STYLES
+  --------------------------------*/
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+  }
+
+  
+/* ===============================
+   CUSTOM SCROLLBAR STYLING
+   (webkit-based browsers)
+   =============================== */
+
+::-webkit-scrollbar {
+  width: 8px; /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #eee; /* color of the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* scrollbar “thumb” color */
+  border-radius: 4px;     /* roundness of the thumb */
+  border: 1px solid #eee;/* optional border around the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;       /* color when hovering over the thumb */
+}
+
+/* ===============================
+   FIREFOX SCROLLBAR STYLING
+   =============================== */
+
+/* For Firefox, you can control scrollbar color and width using these properties */
+body {
+  scrollbar-width: thin;             /* "auto" or "thin" */
+  scrollbar-color: #888 #eee;        /* thumb color, track color */
+}
+  
+  html {
+    overflow-x: hidden; /* Added */
+  }
+  
+  body {
+    color: #000;
+    background-color: #fff;
+    line-height: 1.5;
+    width: 100%;
+    height: 100vh;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  img {
+    display: block;
+    max-width: 50%;
+    height: auto;
+    border-radius: 50px;
+  }
+  button {
+    cursor: pointer;
+    border: none;
+  }
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #2563eb;
+    color: #fff;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+  .btn:hover {
+    background-color: #1d4ed8;
+  }
+  .section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .section-subtitle {
+    font-size: 1rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  /* ------------------------------
+     TOP BAR & NAVBAR
+  --------------------------------*/
+  .top-bar {
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    font-size: 0.875rem;
+    text-align: center;
+    padding: 0.5rem 1rem;
+  }
+  .top-bar a {
+    color: #fff;
+    text-decoration: underline;
+    margin-left: 0.5rem;
+  }
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+  }
+  .navbar-left {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  .navbar-right a {
+    margin-left: 1rem;
+    font-weight: 500;
+    color: #555;
+  }
+  .navbar-right a:hover {
+    color: #000;
+  }
+  /* ------------------------------
+     HERO SECTION
+  --------------------------------*/
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 0 2rem;
+  }
+  .hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    max-width: 700px;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .hero p {
+    max-width: 600px;
+    margin-bottom: 2rem;
+    color: #555;
+    font-size: 1.1rem;
+  }
+  .hero .sub-label {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #2563eb;
+  }
+  .hero-img {
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 900px;
+  }
+  .hero-services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 1.5rem;
+  }
+  .hero-services .service-item {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: #555;
+  }
+  .hero-services .service-item i {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+    color: #2563eb;
+  }
+  /* ------------------------------
+     SOLUTION SECTION
+  --------------------------------*/
+  .solution-section {
+    text-align: center;
+    padding: 3rem 0;
+  }
+  .solution-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .solution-card {
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 6px;
+    text-align: left;
+  }
+  .solution-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    color: #111;
+  }
+  .solution-card p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+  }
+  .solution-card .icon {
+    font-size: 2rem;
+    color: #2563eb;
+    margin-bottom: 0.75rem;
+  }
+  /* ------------------------------
+     FEATURES SECTION
+  --------------------------------*/
+  .features-section {
+    padding: 3rem 0;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .feature-card {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 6px;
+    text-align: center;
+  }
+  .feature-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .feature-card p {
+    font-size: 0.95rem;
+    color: #555;
+  }
+  /* ------------------------------
+     ORGANIZE / COLLABORATE SECTION
+  --------------------------------*/
+  .organize-section {
+    padding: 3rem 0;
+  }
+  .organize-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  .organize-box {
+    background: #f5f5f5;
+    padding: 2rem;
+    border-radius: 6px;
+  }
+  .organize-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .organize-box p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+  }
+  .organize-img {
+    border: 1px solid #eee;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  @media (max-width: 900px) {
+    .organize-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  /* ------------------------------
+       TESTIMONIALS
+    --------------------------------*/
+ /* Testimonial Section */
+.testimonial {
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(227, 227, 227);
+}
+
+/* Heading */
+.testimonial h6, .h, .p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.testimonial h6 {
+    font-size: 16px;
+    color: #000000;
+}
+
+.testimonial .h {
+    font-size: 32px;
+    color: #03498a;
+    margin: 10px 0;
+}
+
+.testimonial .p {
+    font-size: 16px;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+/* Slider Container */
+.slide-container {
+    max-width: 1120px;
+    width: 100%;
+    position: relative;
+}
+
+.slide-container i {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#left {
+    left: -3%;
+}
+
+#right {
+    right: -3%;
+}
+
+/* Card Wrapper */
+.card-wapper {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 20px;
+    padding: 20px;
+    scrollbar-width: none;
+}
+
+/* Hide Scrollbar */
+.card-wapper::-webkit-scrollbar {
+    display: none;
+}
+
+/* Cards */
+.card {
+    flex: 0 0 auto;
+    width: 300px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    scroll-snap-align: start;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+/* Image */
+.card-image {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 4px solid #4070f4;
+}
+
+/* Text */
+.name {
+    font-size: 18px;
+    color: #474747;
+    margin-top: 10px;
+}
+
+.description {
+    font-size: 14px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.stars {
+    font-size: 20px;
+    color: gold;
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .slide-container i {
+        display: none;
+    }
+    .card {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+  
+  
+  /* ------------------------------
+     FAQ SECTION
+  --------------------------------*/
+  .faq-section {
+    padding: 3rem 0;
+  }
+  .faq-accordion {
+    max-width: 800px;
+    margin: 2rem auto 0;
+  }
+  .faq-item {
+    border-bottom: 1px solid #ddd;
+    padding: 1rem 0;
+    cursor: pointer;
+  }
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #111;
+  }
+  .faq-answer {
+    display: none;
+    font-size: 0.95rem;
+    color: #555;
+    margin-top: 0.5rem;
+    line-height: 1.5;
+  }
+  /* ------------------------------
+     CTA SECTION
+  --------------------------------*/
+  .cta-section {
+    background: #111;
+    color: #fff;
+    text-align: center;
+    padding: 3rem 0;
+  }
+  .cta-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  /* ------------------------------
+     SUBSCRIBE & FOOTER
+  --------------------------------*/
+  .subscribe-section {
+    background: #f9f9f9;
+    padding: 2rem 0;
+    text-align: center;
+  }
+  .subscribe-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .subscribe-section p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+  }
+  .subscribe-form {
+    display: flex;
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .subscribe-form input {
+    flex: 1;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+  }
+  .subscribe-form button {
+    background-color: #2563eb;
+    color: #fff;
+    padding: 0 1rem;
+    font-size: 1rem;
+    border-radius: 0 4px 4px 0;
+    transition: background-color 0.3s ease;
+  }
+  .subscribe-form button:hover {
+    background-color: #1d4ed8;
+  }
+  .footer {
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid #ddd;
+    text-align: center;
+  }
+  .footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .footer-top a {
+    color: #555;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+  }
+  .footer-top a:hover {
+    color: #000;
+  }
+  .footer-bottom {
+    font-size: 0.85rem;
+    color: #999;
+  }
+  .language-select {
+    margin-left: 0.5rem;
+    color: #555;
+  }
+  @media (max-width: 600px) {
+    .subscribe-form {
+      flex-direction: column;
+    }
+    .subscribe-form input {
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      border-right: 1px solid #ccc;
+    }
+    .subscribe-form button {
+      border-radius: 4px;
+    }
+  }
+
+  /* Updated Responsive Base Styles */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
+  
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  .navbar-right {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .navbar-right.active {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .hamburger {
+    display: block;
+  }
+  
+  .hero-img {
+    max-width: 100%;
+  }
+  
+  .organize-grid {
+    gap: 1rem;
+  }
+}
+
+/* Mobile Menu */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  
+  .navbar-right a {
+    margin: 0.5rem 0;
+  }
+}
+
+/* Improved Testimonial Responsiveness */
+@media (max-width: 768px) {
+  .testimonial {
+    height: auto;
+    padding: 2rem 0;
+  }
+  
+  .card {
+    width: 85%;
+    margin: 0 auto;
+  }
+}
+
+/* Better Image Responsiveness */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Improved Grid Layouts */
+.solution-cards,
+.features-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Better Touch Targets */
+a, button {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* ------------------------------
+     RESPONSIVE MEDIA QUERIES
+  --------------------------------*/
+/* Mobile First Approach */
+@media (max-width: 768px) {
+  html{
+    overflow-x: hidden; /* Ensure overflow containment on mobile */
+  }
+
+  /* Improve mobile layout containment */
+  .container {
+    width: 95%;
+    padding: 0 15px;
+  }
+
+  /* Optimize grid layouts for small screens */
+  .solution-cards,
+  .features-grid,
+  .organize-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Mobile menu refinements */
+  .navbar-right {
+    width: 100%;
+    padding: 1rem 15px;
+  }
+  
+
+  /* Testimonial slider adjustments */
+  .card {
+    width: 90%;
+    margin: 0 5%;
+  }
+
+  /* Hero image scaling */
+  .hero-img {
+    max-width: 100%;
+    margin: 1rem -15px;
+  }
+}
+
+/* Tablet Optimization */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Intermediate grid layouts */
+  .solution-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Adjust organizer section */
+  .organize-grid {
+    gap: 1.5rem;
+    padding: 0 2rem;
+  }
+
+  /* Tablet typography scaling */
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+}
+
+/* Prevent animation overflow in mobile menu */
+@media (max-width: 768px) {
+  .navbar-right.active {
+    position: relative;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* Touch target optimization */
+@media (pointer: coarse) {
+  .btn,
+  a {
+    min-width: 48px;
+    min-height: 48px;
+  }
+}
+
+/* Landscape orientation fixes */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero {
+    padding: 2rem 0;
+  }
+  .testimonial {
+    padding: 2rem 0;
+  }
+}
+
+/* High-density screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+  .hero-img {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Welcome Back to Task Reminder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <!-- LEFT PANEL (Login Form) -->
+    <div class="auth-left">
+      <!-- (Optional) Logo / Brand -->
+      <div class="brand-logo">
+        <!-- <img src="assets/images/TaskReminder-logo.png" alt="Task Reminder Logo" /> -->
+      </div>
+
+      <!-- Heading & Subheading -->
+      <h1 class="auth-title">Welcome Back to Task Gardiuan</h1>
+      <p class="auth-subtitle">
+        Enter your email address and password to continue.
+      </p>
+
+      <!-- Login Form -->
+      <form class="auth-form">
+        <!-- Email -->
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email address"
+          required
+        />
+
+        <!-- Password -->
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          required
+        />
+
+        <!-- Extras: Remember Me & Forgot Password -->
+        <div class="form-extras">
+          <label class="remember-me">
+            <input type="checkbox" id="rememberMe" name="rememberMe" />
+            Remember me
+          </label>
+          <!-- <a href="forgot-password.html" class="forgot-password">Forgot password</a> -->
+        </div>
+
+        <!-- Sign In Button -->
+        <button type="submit" class="auth-btn">Log In</button>
+      </form>
+
+      <!-- Social Sign In -->
+      <div class="auth-social">
+        <p class="social-text">Or sign in with</p>
+        <div class="social-buttons">
+          <button class="social-btn google-btn">Google</button>
+          <button class="social-btn github-btn">Github</button>
+        </div>
+      </div>
+
+      <!-- Redirect to Register -->
+      <div class="auth-redirect">
+        <p>
+          Don't have an account?
+          <a href="signup.html" class="redirect-link">Register</a>
+        </p>
+      </div>
+
+      <!-- Footer (Optional) -->
+      <div class="auth-footer">
+        <p>
+          © 2025 Task Guardian. All rights reserved. &nbsp;
+          <a href="#" class="footer-link">Privacy Policy</a> &nbsp;·&nbsp;
+          <a href="#" class="footer-link">Terms &amp; Conditions</a>
+        </p>
+      </div>
+    </div>
+<!-- RIGHT PANEL (Dark Analytics / Insights) -->
+<div class="auth-right">
+  <div class="insight-content">
+    <h2 class="insight-title">Create your Task</h2>
+    <p class="insight-text">
+      Make informed decisions with Task Guardian, your smart task manager.
+      <br />
+      Stay on top of your tasks with real-time reminders for better productivity.
+    </p>
+
+    <!-- Stats / Analytics Preview -->
+    <div class="stats-grid">
+      <div class="stats-card">
+        <h3>5,832</h3>
+        <p>Active Users</p>
+      </div>
+      <div class="stats-card">
+        <h3>3,415</h3>
+        <p>Task Created</p>
+      </div>
+      <div class="stats-card">
+        <h3>11,680</h3>
+        <p>Reports Generated</p>
+      </div>
+      <div class="stats-card">
+        <h3>92%</h3>
+        <p>Customer Satisfaction</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  <!-- Notification Popup -->
+  <div id="customPopup" class="popup hidden">
+    <div class="popup-content">
+      <span class="popup-close">&times;</span>
+      <h3 id="popupTitle"></h3>
+      <p id="popupMessage"></p>
+    </div>
+  </div>
+  
+  <script type="module" src="js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Task Guardian - Task Manager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/task-manager.css" />
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="task-manager-container">
+    <!-- ========== SIDEBAR ========== -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <div class="brand">
+          <h2>Task Guardian</h2>
+        </div>
+      </div>
+      <!-- Private Section -->
+      <div class="sidebar-section" data-type="private">
+        <h2 class="section-title">Private</h2>
+        <ul class="section-list" id="privateList">
+          <li class="list-item active">Home</li>
+          <li class="list-item active">Completed</li>
+          <li class="list-item create-new">Create New List</li>
+        </ul>
+      </div>
+
+
+      <!-- Back Button Section -->
+      <div class="back-button-section">
+        <a href="dashboard.html" class="back-button">&#8592; Back to Dashboard</a>
+      </div>
+
+
+
+      <!-- Group Section (optional similar functionality) -->
+      <!-- <div class="sidebar-section" data-type="group">
+        <h2 class="section-title">Group</h2>
+        <ul class="section-list" id="groupList">
+          <li class="list-item">Mobile Project</li>
+          <li class="list-item">Future Project</li>
+          <li class="list-item create-new">Create New Group</li>
+        </ul>
+      </div> -->
+    </aside>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main class="main-content">
+      <!-- Header / Top Bar -->
+      <header class="main-header">
+        <!-- Hamburger Button: visible on small screens -->
+        <button id="hamburgerBtn" class="hamburger-btn">☰</button>
+        <div class="header-left">
+          <h1>Good Morning, UserName! <span class="emoji">☀️</span></h1>
+          <p>Today, Wed 26 July 2023</p>
+        </div>
+        <div class="header-right">
+          <!-- "Today" Dropdown -->
+          <div class="dropdown">
+            <button class="date-dropdown" id="dateDropdown">
+              Today <span class="arrow-down">&#9662;</span>
+            </button>
+            <div id="dateDropdownMenu" class="dropdown-menu hidden">
+              <div class="dropdown-item">All</div>
+              <div class="dropdown-item">Today</div>
+              <div class="dropdown-item">Yesterday</div>
+              <div class="dropdown-item">Tomorrow</div>
+              <div class="dropdown-item">Pick a Date</div>
+            </div>
+          </div>
+        </div>
+        
+
+      </header>
+
+      <!-- Tasks List Section -->
+      <section class="tasks-section">
+        <ul class="tasks-list" id="tasksList">
+          <!-- Tasks will be populated here via JavaScript -->
+        </ul>
+      </section>
+    </main>
+
+    <!-- Create Task Button (Floating Button) -->
+    <button class="create-task-btn" id="createTaskBtn">Create New Task</button>
+  </div>
+
+  <!-- ========== TASK MODAL: Create/Edit Task ========== -->
+  <div class="modal" id="taskModal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModalBtn">&times;</span>
+      <h2 id="modalTitle">Create New Task</h2>
+      <form id="taskForm">
+        <label for="taskName">Task Name</label>
+        <input type="text" id="taskName" placeholder="e.g. Read a book" required />
+
+        <label for="taskList">Pick a List</label>
+        <select id="taskList">
+
+        </select>
+
+        <label for="taskNotes">Add notes</label>
+        <textarea id="taskNotes" placeholder="Additional details..."></textarea>
+
+        <label for="taskPriority">
+          <input type="checkbox" id="taskPriority" />
+          Add to priority
+        </label>
+
+        <input type="hidden" id="taskRepeatFrequency" name="repeat_frequency">
+        <input type="hidden" id="taskRepeatInterval" name="repeat_interval">
+        <input type="hidden" id="taskEndRepeat" name="end_repeat">
+
+        <div class="datetime-row">
+          <div>
+            <label for="taskDate">Date</label>
+            <input type="date" id="taskDate" required/>
+          </div>
+          <div>
+            <label for="taskTime">Time</label>
+            <input type="time" id="taskTime" />
+          </div>
+        </div>
+
+        <button type="submit" id="saveTaskBtn">Save Task</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== ADVANCED SCHEDULING MODAL ========== -->
+  <!-- In task-manager.html - Update the Advanced Scheduling Modal section -->
+<div class="modal" id="advancedSchedulingModal">
+  <div class="modal-content">
+    <span class="close-modal" id="closeAdvancedModal">&times;</span>
+    <h2>Advanced Scheduling</h2>
+    <form id="advancedSchedulingForm">
+      <label for="repeatFrequency">Repeat Frequency</label>
+      <select id="repeatFrequency" name="repeatFrequency">
+        <option value="none">None</option>
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+        <option value="monthly">Monthly</option>
+        <option value="yearly">Yearly</option>
+      </select>
+
+      <!-- Add hidden inputs for task association -->
+      <input type="hidden" id="advancedTaskId">
+      <input type="hidden" id="advancedTaskName">
+      
+      <div id="repeatOptions">
+        <label for="repeatInterval">Repeat every</label>
+        <input type="number" id="repeatInterval" name="repeatInterval" min="1" value="1" />
+        <span id="repeatIntervalLabel">day(s)</span>
+
+        <label for="endRepeat">End repeat</label>
+        <input type="date" id="endRepeat" name="endRepeat" />
+
+        <div class="time-row">
+          <div>
+            <label for="scheduleTime">Time</label>
+            <input type="time" id="scheduleTime" name="scheduleTime" required />
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" id="saveAdvancedSchedule">Save Schedule</button>
+    </form>
+  </div>
+</div>
+
+
+  <!-- Advanced Scheduling Button (placed above the Create Task button) -->
+  <button id="advancedScheduleBtn">Advanced Scheduling</button>
+
+
+  <!-- CALENDAR MODAL -->
+<div id="calendarModal" class="calendar-modal hidden">
+  <div class="calendar-modal-content">
+    <!-- Header / Title -->
+    <div class="calendar-header">
+      <h2 id="selectedMonthYear">July 2023</h2>
+      <button id="closeCalendarBtn" class="close-calendar">&times;</button>
+    </div>
+
+    <!-- Calendar Navigation (Prev/Next) -->
+    <div class="calendar-nav">
+      <button id="prevMonthBtn" class="month-btn">&#9664;</button>
+      <span id="currentMonthLabel">July</span>
+      <button id="nextMonthBtn" class="month-btn">&#9654;</button>
+    </div>
+
+    <!-- Days of the week row -->
+    <div class="calendar-days-row">
+      <span>Sun</span>
+      <span>Mon</span>
+      <span>Tue</span>
+      <span>Wed</span>
+      <span>Thu</span>
+      <span>Fri</span>
+      <span>Sat</span>
+    </div>
+
+    <!-- Date Grid -->
+    <div id="datesGrid" class="dates-grid">
+      <!-- JS will populate the days here -->
+    </div>
+
+    <!-- Optional: Time Selection -->
+    <div class="time-section">
+      <label for="timePicker">Time:</label>
+      <input type="time" id="timePicker" value="08:00" />
+    </div>
+
+    <!-- Bottom Buttons -->
+    <div class="calendar-footer">
+      <button id="saveCalendarBtn" class="save-calendar-btn">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- New List Modal -->
+<div id="newListModal" class="modal new-list-modal hidden">
+  <div class="modal-content new-list-modal-content">
+    <span class="close-modal" id="closeNewListModal">&times;</span>
+    <h2>Create New List</h2>
+    <form id="newListForm">
+      <label for="newListName">List Name</label>
+      <input type="text" id="newListName" placeholder="Enter list name" required />
+      <button type="submit" id="saveNewListBtn">Save List</button>
+    </form>
+  </div>
+</div>
+
+<div id="htmlNotification" class="html-notification">
+  <span id="closeNotification" class="notification-close">×</span>
+  <h3 id="notificationTitle"></h3>
+  <p id="notificationContent"></p>
+</div>
+<audio id="notifSound" src="assets/notification.mp3" preload="auto"></audio>
+
+  <!-- JavaScript File -->
+  <script src="js/task-manager.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Task Guardian - Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Link your main stylesheet -->
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <!-- Sidebar Top (Brand / Search) -->
+      <div class="sidebar-top">
+        <div class="brand">
+          <h2>Task Guardian</h2>
+        </div>
+      </div>
+
+      <!-- Sidebar Navigation -->
+      <nav class="sidebar-nav">
+        <ul>
+          <li><a href="#" class="active">Overview</a></li>
+          <li><a href="calender.html">Calendar</a></li>
+          <li><a href="task-manager.html">Task Manager</a></li>
+          <li><a href="setting.html">Settings</a></li>
+        </ul>
+      </nav>
+
+      
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <!-- Header / Title -->
+      <header class="dashboard-header">
+        <button id="hamburger-btn" class="hamburger-btn">&#9776;</button>
+        <div class="header-titles">
+          <h1>Let's start your new happy day!</h1>
+          <p>Check the calendar to see what interesting tasks are waiting for you today.</p>
+        </div>
+        <button class="my-calendar-btn"><a id="calendar" href="calender.html">My Calendar</a></button>
+      </header>
+
+      <!-- Daily Activity -->
+      <section class="daily-activity">
+        <h2>Daily Activity</h2>
+        <!-- <div class="activity-chart">
+          <img src="" alt="Daily Activity" />
+        </div> -->
+      </section>
+
+      <!-- Stats / Cards Row -->
+      <section class="stats-cards">
+        <!-- Team Efficiency Card -->
+        <div class="card team-efficiency">
+          <h3>Task Complete Efficiency</h3>
+          <p class="percentage">0%</p>
+          <div class="bar-chart-placeholder">
+            <canvas id="barChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Mood Card -->
+        <div class="card mood-check">
+          <h3>What’s YOUR Mood?</h3>
+          <div class="mood-tags">
+            <span class="mood-tag">Energetic</span>
+            <span class="mood-tag">Excited</span>
+            <span class="mood-tag">Curious</span>
+            <span class="mood-tag">Annoyed</span>
+            <span class="mood-tag">Disappointed</span>
+          </div>
+        </div>
+
+        <!-- Project Efficiency Card -->
+        <div class="card project-efficiency">
+          <h3>Task Efficiency</h3>
+          <div class="pie-chart-placeholder">
+            <canvas id="pieChart"></canvas>
+          </div>
+          <div class="project-legend">
+            <div class="legend-item">
+              <span class="legend-color color-completed"></span> Completed
+            </div>
+            <div class="legend-item">
+              <span class="legend-color color-progress"></span> In Progress
+            </div>
+            <div class="legend-item">
+              <span class="legend-color color-pending"></span> Pending
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Include Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Link to your main script -->
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

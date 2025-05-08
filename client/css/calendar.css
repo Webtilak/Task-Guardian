@@ -1,0 +1,414 @@
+/* ========== RESET & GLOBAL STYLES ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Add this to your task-manager.css */
+
+/* ========== CUSTOM SCROLLBARS ========== */
+/* Main scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #1a1a1a;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #2d2d2d;
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Thumb */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #ff8c00, #ff6b6b);
+  border-radius: 10px;
+  border: 2px solid #2d2d2d;
+  transition: all 0.3s ease;
+}
+
+/* Thumb hover effect */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #ff6b6b, #ff8c00);
+  transform: scale(1.05);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ff8c00 #2d2d2d;
+}
+
+/* Sidebar specific scrollbar */
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #ff8c00;
+  border-radius: 4px;
+}
+
+/* Task list scrollbar */
+.tasks-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Animated scrollbar for modal content */
+.modal-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #ff8c00, #ffd700);
+  animation: scrollGlow 1.5s infinite alternate;
+}
+
+@keyframes scrollGlow {
+  from {
+    box-shadow: 0 0 5px rgba(255, 140, 0, 0.3);
+  }
+  to {
+    box-shadow: 0 0 15px rgba(255, 140, 0, 0.6);
+  }
+}
+
+/* Modern minimal scrollbar for dropdowns */
+.dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background: rgba(255, 140, 0, 0.5);
+  border-radius: 3px;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #fafafa;
+  color: #333;
+  min-height: 100vh;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ========== SIDEBAR ========== */
+.sidebar {
+  width: 280px;
+  background-color: #1c1c1c;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100vh;
+  z-index: 1000;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.sidebar-top {
+  padding: 1.5rem;
+}
+
+.brand h2 {
+  font-size: 1.5rem;
+  color: #ff8c00;
+  text-align: center;
+}
+
+.sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 0;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0 1rem;
+}
+
+.sidebar-nav li {
+  margin: 0.5rem 0;
+}
+
+.sidebar-nav a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+  color: #fff;
+  background-color: #333;
+}
+
+/* .logout-section {
+  padding: 1.5rem;
+  background-color: #2a2a2a;
+  text-align: center;
+}
+
+.logout-btn {
+  background-color: #ff4d4f;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+} */
+
+.logout-btn:hover {
+  background-color: #e04648;
+}
+
+/* SIDEBAR OVERLAY */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+  cursor: pointer;
+}
+
+/* ========== MAIN CONTENT ========== */
+.main-content {
+  margin-left: 280px;
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 100vh;
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 1rem;
+  border-bottom: 1px solid #e5e5e5;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.hamburger-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.header-left h1 {
+  font-size: 1.4rem;
+  color: #333;
+}
+
+/* ========== CALENDAR SECTION ========== */
+.calendar-section {
+  padding: 1rem;
+}
+
+#calendar {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.fc .fc-toolbar {
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.fc .fc-toolbar-title {
+  font-size: 1.3rem !important;
+  margin: 0.5rem 0;
+}
+
+.fc .fc-button {
+  background-color: #ff8c00;
+  border: none;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.fc .fc-button:hover {
+  background-color: #e07a00;
+}
+
+.fc .fc-daygrid-day-number {
+  color: #333;
+  font-weight: 500;
+}
+
+/* ========== NOTIFICATION POPUP ========== */
+/* ========== MODAL POPUP ========== */
+.modal-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+}
+
+.modal-content {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  animation: modalSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10000;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #eee;
+}
+
+.modal-header h3 {
+  color: #333;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.modal-close {
+  color: #888;
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: #ff8c00;
+}
+
+.modal-body p {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@keyframes modalSlideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Modal */
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+  
+  .modal-header h3 {
+    font-size: 1.3rem;
+  }
+  
+  .modal-body p {
+    font-size: 0.9rem;
+  }
+}
+
+/* ========== RESPONSIVE STYLES ========== */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    width: 260px;
+  }
+  
+  .sidebar.active {
+    transform: translateX(0);
+  }
+  
+  .sidebar-overlay.active {
+    display: block;
+  }
+  
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  .hamburger-btn {
+    display: block;
+  }
+  
+  .fc .fc-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .fc .fc-toolbar-chunk {
+    margin: 0.3rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand h2 {
+    font-size: 1.3rem;
+  }
+  
+  .header-left h1 {
+    font-size: 1.2rem;
+  }
+  
+  .fc .fc-toolbar-title {
+    font-size: 1.1rem !important;
+  }
+  
+  .fc .fc-button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .fc .fc-daygrid-day-number {
+    font-size: 0.9rem;
+  }
+}

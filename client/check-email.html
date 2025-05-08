@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Check Your Email -</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/check-email.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <!-- LEFT PANEL (Check Email) -->
+    <div class="auth-left">
+      <!-- (Optional) Logo / Brand -->
+      <div class="brand-logo">
+        <!-- <img src="assets/images/cusana-logo.png" alt="Cusana Logo" /> -->
+      </div>
+
+      <!-- Envelope Icon (optional) -->
+      <div class="email-icon">
+        <!-- You could use an <img> or an SVG icon. Example placeholder: -->
+        <!-- <img src="assets/images/email-icon.png" alt="Email Icon" /> -->
+      </div>
+
+      <!-- Heading & Message -->
+      <h1 class="auth-title">Check your email</h1>
+      <p class="auth-subtitle">
+        We have sent you a password reset email. <br />
+        Please check your inbox.
+      </p>
+
+      <!-- Open Email Button -->
+      <button class="auth-btn" id="openEmailBtn">Open Gmail</button>
+
+      <!-- Resend Email Link -->
+      <div class="resend-section">
+        <p>
+          Didn’t receive the email?
+          <a href="#" class="resend-link">Resend</a>
+        </p>
+      </div>
+
+      <!-- Footer (Optional) -->
+      <div class="auth-footer">
+        <p>
+          © 2025. All rights reserved. &nbsp;
+          <a href="#" class="footer-link">Privacy Policy</a> &nbsp;·&nbsp;
+          <a href="#" class="footer-link">Terms & Conditions</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL (Dark Analytics / Insights) -->
+    <div class="auth-right">
+      <div class="insight-content">
+        <h2 class="insight-title">Transform Data into Cool Insights</h2>
+        <p class="insight-text">
+          Make informed decisions with’s powerful analytics.
+          <br />
+          Get real-time insights for better growth strategies.
+        </p>
+
+        <!-- Stats / Analytics Preview -->
+        <div class="stats-grid">
+          <div class="stats-card">
+            <h3>5,832</h3>
+            <p>Active Users</p>
+          </div>
+          <div class="stats-card">
+            <h3>3,415</h3>
+            <p>Projects</p>
+          </div>
+          <div class="stats-card">
+            <h3>11,680</h3>
+            <p>Reports Generated</p>
+          </div>
+          <div class="stats-card">
+            <h3>92%</h3>
+            <p>Customer Satisfaction</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript if you want to open Gmail in a new tab -->
+  <script>
+    document.getElementById('openEmailBtn')?.addEventListener('click', function() {
+      window.open('https://mail.google.com', '_blank');
+    });
+  </script>
+</body>
+</html>

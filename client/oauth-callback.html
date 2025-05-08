@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OAuth Callback</title>
+</head>
+<body>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const token = params.get("token");
+        const username = params.get("username");
+        const userId = params.get("userId");
+        
+        if(token) {
+            localStorage.setItem('token', token);
+            localStorage.setItem('username', username);
+            localStorage.setItem("userId", userId);
+            window.location.replace('./dashboard.html');
+        } else {
+            alert('Authentication failed');
+            window.location.replace('./login.html');
+        }
+    </script>
+</body>
+</html>
