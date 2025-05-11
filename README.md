@@ -1,4 +1,4 @@
-# 🛡️ Task Guardian
+# 🛡️ Task Reminder
 
 Task Guardian is a full-stack task management web application that helps users organize their tasks, set reminders, and stay productive. It supports authentication, task grouping, and reminder notifications.
 
