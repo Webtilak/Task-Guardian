@@ -98,7 +98,7 @@ If you see the error `Import "flask" could not be resolved (PylancereportMissing
 3. **Select Correct Python Interpreter in VS Code**  
    - Open Command Palette: `Ctrl+Shift+P`
    - Search: `Python: Select Interpreter`
-   - Choose the one from the `venv/` directory
+   - Choose the Python recommended from the `venv/` directory
 
 Then reload VS Code if needed.
 
