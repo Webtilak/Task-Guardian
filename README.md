@@ -75,6 +75,35 @@ Visit: `http://localhost:5000`
 
 ---
 
+## 🛠️ Common Issue: Flask Import Not Resolved in VS Code
+
+If you see the error `Import "flask" could not be resolved (PylancereportMissingImports)` in VS Code, follow these steps:
+
+1. **Install Flask**  
+   Ensure Flask is installed in your environment:
+   ```bash
+   pip install flask
+   ```
+
+2. **Activate Virtual Environment**  
+   Activate the virtual environment **before running or editing**:
+   ```bash
+   # Windows
+   venv\Scripts\activate
+
+   # macOS/Linux
+   source venv/bin/activate
+   ```
+
+3. **Select Correct Python Interpreter in VS Code**  
+   - Open Command Palette: `Ctrl+Shift+P`
+   - Search: `Python: Select Interpreter`
+   - Choose the one from the `venv/` directory
+
+Then reload VS Code if needed.
+
+---
+
 ## 🧪 Test Accounts
 
 You can register using:
@@ -92,6 +121,6 @@ MIT License. Feel free to use, modify, and share!
 
 ## 🙌 Acknowledgments
 
-* Flask Documentation
-* PostgreSQL
-* Google & GitHub OAuth
+* Flask Documentation  
+* PostgreSQL  
+* Google & GitHub OAuth  
