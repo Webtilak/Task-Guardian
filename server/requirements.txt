@@ -1,0 +1,12 @@
+Flask
+Flask-Cors
+Flask-Login
+Flask-Mail
+Flask-SQLAlchemy
+Flask-DotEnv
+psycopg2-binary
+python-dotenv
+requests
+oauthlib
+gunicorn
+PyJWT

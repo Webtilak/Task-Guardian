@@ -718,6 +718,10 @@ a, button {
 
 /* Prevent animation overflow in mobile menu */
 @media (max-width: 768px) {
+  .navbar-left > h3{
+    margin-top: 10px;
+    margin-left: 100px;
+  }
   .navbar-right.active {
     position: relative;
     transform: none;
